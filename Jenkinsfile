@@ -39,9 +39,7 @@ pipeline {
         stage('deploy') {
             steps {
                 echo 'This is deployement area'
-                sh "docker stop notes-app || true"
-                sh "docker rm notes-app || true"
-                sh "docker run -d -p 8000:8000 --name notes-app rana2742/notes-app:latest python manage.py runserver 0.0.0.0:8000"
+                sh"docker compose down && docker compose up -d"
             }
         }
     }
