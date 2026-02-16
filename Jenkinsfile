@@ -35,12 +35,15 @@ pipeline {
                 }
             }
         }
+ stage('deploy') {
+    steps {
+        echo 'This is deployment area'
+        sh """
+            docker-compose down || true
+            docker-compose up -d --build
+        """
+    }
+}
 
-        stage('deploy') {
-            steps {
-                echo 'This is deployement area'
-               sh "docker-compose down && docker-compose up -d"
-            }
-        }
     }
 }
