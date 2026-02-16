@@ -39,7 +39,7 @@ pipeline {
         stage('deploy') {
             steps {
                 echo 'This is deployement area'
-                sh"docker compose down && docker compose up -d"
+                sh "docker compose down && docker compose up -d"
             }
         }
     }
